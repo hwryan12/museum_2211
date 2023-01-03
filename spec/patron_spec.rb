@@ -1,4 +1,5 @@
 require 'rspec'
+require './lib/exhibit'
 require './lib/patron'
 
 RSpec.describe Patron do
