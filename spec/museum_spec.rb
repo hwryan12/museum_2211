@@ -10,6 +10,7 @@ RSpec.describe Museum do
   let(:imax) { Exhibit.new({name: "IMAX",cost: 15}) }
   let(:patron_1) { Patron.new("Bob", 20) }
   let(:patron_2) { Patron.new("Sally", 20) }
+  let(:patron_3) { Patron.new("Johnny", 5) }
 
   describe '#initialize' do
     it 'exists' do
@@ -31,7 +32,7 @@ RSpec.describe Museum do
       expect(dmns.exhibits).to eq([gems_and_minerals, dead_sea_scrolls, imax])
     end
   end
-  
+
   describe '#recommend_exhibits' do
     it 'will return the exhibits the patrons are interested in' do
       dmns.add_exhibit(gems_and_minerals)
@@ -44,6 +45,16 @@ RSpec.describe Museum do
       # require "pry";binding.pry
       expect(dmns.recommend_exhibits(patron_1)).to eq([gems_and_minerals, dead_sea_scrolls])
       expect(dmns.recommend_exhibits(patron_2)).to eq([imax])
+    end
+  end
+
+  describe '#admit' do
+    it 'is empty by default' do
+      dmns.add_exhibit(gems_and_minerals)
+      dmns.add_exhibit(dead_sea_scrolls)
+      dmns.add_exhibit(imax)
+
+      expect(dmns.patrons).to eq ([])
     end
   end
 end
