@@ -24,4 +24,8 @@ class Museum
     end
     recommendations
   end
+
+  def admit(patron)
+    patrons << patron
+  end
 end
